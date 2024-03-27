@@ -1,3 +1,5 @@
+import { options } from '@/app/api/auth/[...nextauth]/options'
+
 import Image from 'next/image'
 import styles from './aside.module.css'
 
@@ -10,8 +12,14 @@ import { Account } from '../icons/Account'
 import { Info } from '../icons/Info'
 import { Login } from '../icons/Login'
 import { Button } from '../Button'
+import { Logout } from '../icons/Logout'
 
-export const Aside = () => {
+import { getServerSession } from 'next-auth'
+
+export const Aside = async () => {
+
+    const session = await getServerSession(options)
+
     return (<aside className={styles.aside}>
         <ul>
             <li>
@@ -30,12 +38,12 @@ export const Aside = () => {
                     Feed
                 </AsideLink>
             </li>
-            <li>
+            {session && <li>
                 <AsideLink href="/profile">
                     <Account />
                     Perfil
                 </AsideLink>
-            </li>
+            </li>}
             <li>
                 <AsideLink href="/about">
                     <Info />
@@ -43,10 +51,17 @@ export const Aside = () => {
                 </AsideLink>
             </li>
             <li>
-                <AsideLink href="/login?">
+                {!session && <AsideLink href="/api/auth/signin">
                     <Login />
                     Login
                 </AsideLink>
+                }
+                {session && <AsideLink href="/api/auth/signout?callbackUrl=/">
+                    <Logout />
+                    Logout
+                </AsideLink>
+                }
+
             </li>
         </ul>
     </aside>)
