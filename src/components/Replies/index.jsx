@@ -35,7 +35,7 @@ export const Replies = ({ comment }) => {
             {showReplies && <ul>
                 { replies.map(reply => <li key={reply.id}>
                     <Comment comment={reply}/>
-                    <ReplyModal comment={reply}/>
+                    <ReplyModal comment={reply} onClose={fetchData}/>
                 </li>) }
             </ul>}
         </div>

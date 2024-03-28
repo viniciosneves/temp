@@ -9,14 +9,22 @@ import { SubmitButton } from "../SubmitButton";
 import { Comment } from "../Comment";
 import { postReply } from "@/actions";
 
-export const ReplyModal = ({ comment, post }) => {
+export const ReplyModal = ({ comment, onClose }) => {
     const modalRef = useRef(null);
 
     const openModal = () => {
         modalRef.current.openModal();
     };
 
-    const action = postReply.bind(null, comment)
+    const action = (formData) => {
+        postReply(comment, formData)
+            .then(() => {
+                if (onClose) {
+                    onClose()
+                }
+                modalRef.current.closeModal();
+            })
+    }
 
     return (<>
         <Modal ref={modalRef}>

@@ -49,13 +49,14 @@ export async function postReply(parent, formData) {
         }
     })
 
-    await db.comment.create({
+    return db.comment.create({
         data: {
             text: formData.get('text'),
             authorId: session.user.id,
             postId: post.id,
             parentId: parent.parentId ?? parent.id
         }
+    }).then(() => {
+        revalidatePath(`/${post.slug}`)
     })
-    revalidatePath(`/${post.slug}`)
 }
