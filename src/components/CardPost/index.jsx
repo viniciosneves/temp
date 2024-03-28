@@ -44,7 +44,7 @@ export const CardPost = ({ post, highlight }) => {
                     </div>
                 </div>
                 <Avatar
-                    imageSrc={post.author.avatar}
+                    imageSrc={post.author.image}
                     name={post.author.username}
                 />
             </footer>
