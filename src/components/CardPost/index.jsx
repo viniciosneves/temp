@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Avatar } from "../Avatar"
+import { Author } from "../Author"
 import styles from './cardpost.module.css'
 import Link from "next/link"
 
@@ -43,7 +43,7 @@ export const CardPost = ({ post, highlight }) => {
                         </p>
                     </div>
                 </div>
-                <Avatar
+                <Author
                     imageSrc={post.author.image}
                     name={post.author.username}
                 />
