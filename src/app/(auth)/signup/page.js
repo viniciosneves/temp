@@ -11,9 +11,9 @@ import { TextDivider } from '@/components/TextDivider'
 import { Providers } from '@/components/Providers'
 import Link from 'next/link'
 import { Login } from '@/components/icons/Login'
+import { createUser } from '@/actions'
 
 export default async function Signup() {
-
     return (
       <main className={styles.main}>
         <div>
@@ -26,28 +26,28 @@ export default async function Signup() {
           <h2>
             Olá! Preencha seus dados.
           </h2>
-          <form className={styles.form}>
+          <form className={styles.form} action={createUser}>
             <div>
               <Label>
                 Nome
               </Label>
-              <Input />
+              <Input name="name" id="name" placeholder="Nome completo" required />
             </div>
             <div>
               <Label>
                 E-mail
               </Label>
-              <Input />
+              <Input name="email" id="email" type="email" placeholder="Digite seu e-mail" required />
             </div>
             <div>
               <Label>
                 Senha
               </Label>
-              <Input />
-              <Checkbox label="Li e aceito os termos de uso" />
+              <Input name="password" id="password" type="password" required/>
+              <Checkbox label="Li e aceito os termos de uso" required/>
             </div>
             <div className={styles.action}>
-              <Button>
+              <Button type="submit">
                 Cadastrar <ArrowFoward />
               </Button>
             </div>

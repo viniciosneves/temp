@@ -2,8 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import db from "../../prisma/db";
-import { getServerSession,  } from "next-auth";
+import { getServerSession, } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
+import bcrypt from "bcrypt";
+import logger from "@/logger";
+import { redirect } from "next/navigation";
 
 export async function incrementThumbsUp(post) {
 
@@ -59,4 +62,25 @@ export async function postReply(parent, formData) {
     }).then(() => {
         revalidatePath(`/${post.slug}`)
     })
+}
+
+export async function createUser(formData) {
+
+    try {
+        const hashPassword = await bcrypt.hash(formData.get('password'), 10);
+
+        await db.user.create({
+            data: {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                password: hashPassword
+            }
+        })
+    } catch (error) {
+        logger.error('Falha ao cadastrar usuario', error)
+    } finally {
+        // esse redirect lança um erro, por isso precisa ficar aqui
+        redirect('/api/auth/signin')
+    }
+
 }

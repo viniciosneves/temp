@@ -1,5 +1,7 @@
-{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"dicas-de-acessibilidade-websss"}
-{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"dicas-de-acessibilidade-websss"}
-{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"dicas-de-acessibilidade-webs"}
-{"error":{},"level":"error","message":"Falha ao obter o post com o slug: ","slug":"dicas-de-acessibilidade-webs"}
-{"error":{"clientVersion":"5.9.1","name":"PrismaClientInitializationError"},"level":"error","message":"Falha ao obter posts"}
+{"error":{"clientVersion":"5.11.0","name":"PrismaClientValidationError"},"level":"error","message":"Falha ao criar usuário"}
+{"error":{"clientVersion":"5.11.0","name":"PrismaClientValidationError"},"level":"error","message":"Falha ao criar usuário"}
+{"error":{"clientVersion":"5.11.0","name":"PrismaClientValidationError"},"level":"error","message":"Falha ao criar usuário"}
+{"error":{"clientVersion":"5.11.0","code":"P2002","meta":{"modelName":"User","target":["email"]},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Falha ao criar usuário"}
+{"error":{"digest":"NEXT_REDIRECT;replace;/api/auth/signin;303;","mutableCookies":{"_headers":{},"_parsed":{}}},"level":"error","message":"Falha ao criar usuário"}
+{"error":{"digest":"NEXT_REDIRECT;replace;/api/auth/signin;303;","mutableCookies":{"_headers":{},"_parsed":{}}},"level":"error","message":"Falha ao criar usuário"}
+{"error":{"digest":"NEXT_REDIRECT;replace;/api/auth/signin;303;","mutableCookies":{"_headers":{},"_parsed":{}}},"level":"error","message":"Falha ao criar usuário"}
