@@ -11,6 +11,14 @@
     cursor: pointer;
     border: none;
     text-decoration: none;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .outline {

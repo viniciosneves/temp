@@ -1,12 +1,16 @@
 import { ProfileAvatar } from "@/components/ProfileAvatar"
 import { getServerSession } from "next-auth"
+import db from "../../../../prisma/db"
 
 export default async function Profile () {
 
-    const { user } = await getServerSession()
+    const session = await getServerSession()
+    const user = await db.user.findFirst({ where: {
+        email: session.user.email
+    } })
 
     return (<>
-        <ul>
+        <ul style={{ color: '#888' }}>
             <li>
                 {user.name}
             </li>
