@@ -9,9 +9,12 @@ import { Textarea } from "../Textarea"
 import styles from './commentmodal.module.css'
 import { SubmitButton } from "../SubmitButton"
 import { Subheading } from "../Subheading"
+import { useSession } from "next-auth/react"
 
 export const ModalComment = ({ action }) => {
     const modalRef = useRef(null)
+    const { data: session } = useSession();
+
     return (
         <>
             <Modal ref={modalRef}>
@@ -27,6 +30,7 @@ export const ModalComment = ({ action }) => {
             </Modal>
             <IconButton
                 onClick={() => modalRef.current.openModal()}
+                disabled={!session}
             >
                 <Chat />
             </IconButton>
