@@ -19,6 +19,8 @@ export const options = {
             clientSecret: process.env.GITHUB_CLIENT_SECRET
         }),
         CredentialsProvider({
+            id: "credentials",
+            type: "credentials",
             name: 'Credentials',
             credentials: {
                 email: {
@@ -34,7 +36,7 @@ export const options = {
             },
             async authorize(credentials) {
                 try {
-
+                    console.log('credentials');
                     const foundUser = await db.user.findFirst({
                         where: {
                             email: credentials.email
@@ -68,5 +70,8 @@ export const options = {
             }
             return session;
         },
+    },
+    pages: {
+        signIn: "/signin",
     },
 }

@@ -67,7 +67,7 @@ export default async function Signup() {
         </div>
         <footer className={styles.footer}>
           <p>
-            Já tem conta? <Link href='/api/auth/signin'>Faça seu login! <Login color="#81FE88" /></Link>
+            Já tem conta? <Link href='/signin'>Faça seu login! <Login color="#81FE88" /></Link>
           </p>
         </footer>
       </div>
